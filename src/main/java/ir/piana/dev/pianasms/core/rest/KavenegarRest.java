@@ -24,11 +24,17 @@ public class KavenegarRest {
             @RequestBody KavenegarSmsModel smsModel,
             @RequestParam Map<String,String> allRequestParams) {
         smsService.saveSmsModel(smsModel);
+        smsService.save(new InputSmsModel(allRequestParams));
         return ResponseEntity.ok(200);
     }
 
     @GetMapping(name="guest/sms/all")
     public ResponseEntity<List<KavenegarSmsModel>> allSms() {
         return ResponseEntity.ok(smsService.getSmsModels());
+    }
+
+    @GetMapping(name="guest/sms-param/all")
+    public ResponseEntity<List<InputSmsModel>> allSmsParams() {
+        return ResponseEntity.ok(smsService.getModels());
     }
 }
