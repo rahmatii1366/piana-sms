@@ -19,7 +19,7 @@ public class KavenegarRest {
     @Autowired
     private InputSmsService smsService;
 
-    @PostMapping(name="guest/sms/delivery")
+    @PostMapping("guest/sms/delivery")
     public ResponseEntity delivery(
             @RequestBody KavenegarSmsModel smsModel,
             @RequestParam Map<String,String> allRequestParams) {
@@ -28,12 +28,12 @@ public class KavenegarRest {
         return ResponseEntity.ok(200);
     }
 
-    @GetMapping(name="guest/sms/all")
+    @GetMapping("guest/sms/all")
     public ResponseEntity<List<KavenegarSmsModel>> allSms() {
         return ResponseEntity.ok(smsService.getSmsModels());
     }
 
-    @GetMapping(name="guest/sms-param/all")
+    @GetMapping("guest/sms-param/all")
     public ResponseEntity<List<InputSmsModel>> allSmsParams() {
         return ResponseEntity.ok(smsService.getModels());
     }
