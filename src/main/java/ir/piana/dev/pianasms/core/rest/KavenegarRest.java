@@ -6,6 +6,7 @@ import ir.piana.dev.pianasms.core.service.InputSmsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,8 @@ public class KavenegarRest {
     @Autowired
     private InputSmsService smsService;
 
-    @PostMapping("guest/sms/delivery")
+    @PostMapping(value = "guest/sms/delivery",
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity delivery(
             @RequestBody KavenegarSmsModel smsModel,
             @RequestParam Map<String,String> allRequestParams) {
