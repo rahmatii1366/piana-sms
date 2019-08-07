@@ -50,4 +50,14 @@ public class KavenegarSmsModel {
     public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
+
+    @Override
+    public String toString() {
+        return "KavenegarSmsModel{" +
+                "from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", message='" + message + '\'' +
+                ", messageId='" + messageId + '\'' +
+                '}';
+    }
 }

@@ -3,6 +3,8 @@ package ir.piana.dev.pianasms.core.rest;
 import ir.piana.dev.pianasms.core.model.InputSmsModel;
 import ir.piana.dev.pianasms.core.model.KavenegarSmsModel;
 import ir.piana.dev.pianasms.core.service.InputSmsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ import java.util.Map;
  **/
 @RestController
 public class KavenegarRest {
+    Logger logger = LoggerFactory.getLogger(KavenegarRest.class);
+
     @Autowired
     private InputSmsService smsService;
 
@@ -23,6 +27,8 @@ public class KavenegarRest {
     public ResponseEntity delivery(
             @RequestBody KavenegarSmsModel smsModel,
             @RequestParam Map<String,String> allRequestParams) {
+        logger.info("input sms");
+        logger.info(smsModel.toString());
         smsService.saveSmsModel(smsModel);
         smsService.save(new InputSmsModel(allRequestParams));
         return ResponseEntity.ok(200);
