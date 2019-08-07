@@ -27,12 +27,16 @@ public class KavenegarRest {
     @PostMapping(value = "guest/sms/delivery",
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity delivery(
-            @RequestBody KavenegarSmsModel smsModel,
+            @RequestBody Map smsModel,
             @RequestParam Map<String,String> allRequestParams) {
         logger.info("input sms");
+        smsModel.forEach((k, v) -> {
+            logger.info(k.toString().concat(" => ").concat(v.toString()));
+        });
         logger.info(smsModel.toString());
-        smsService.saveSmsModel(smsModel);
-        smsService.save(new InputSmsModel(allRequestParams));
+//        smsService.saveSmsModel(smsModel);
+        smsService.save(new InputSmsModel(smsModel));
+//        smsService.save(new InputSmsModel(allRequestParams));
         return ResponseEntity.ok(200);
     }
 
