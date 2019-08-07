@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
  * Date: 8/7/2019 9:12 AM
  **/
 @Service
-public class KaveNegarService {
+public class KavenegarService {
     private static final String API_KEY = "6B6773663258696B304F65576F4433516739573856513D3D";
 
     private KavenegarApi api;
