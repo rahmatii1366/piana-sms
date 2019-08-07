@@ -1,0 +1,5 @@
+POST https://piana-sms.herokuapp.com/guest/sms/delivery
+content-type: application/x-www-form-urlencoded;charset=UTF-8
+
+from=0912&to=12341&message=sdjbnu&messageid=1
+###

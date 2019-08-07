@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,10 +25,11 @@ public class KavenegarRest {
     @Autowired
     private InputSmsService smsService;
 
-    @PostMapping(value = "guest/sms/delivery",
+    @RequestMapping(value = "guest/sms/delivery",
+            method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity delivery(
-            @RequestBody Map smsModel,
+            MultiValueMap smsModel,
             @RequestParam Map<String,String> allRequestParams) {
         logger.info("input sms");
         smsModel.forEach((k, v) -> {
