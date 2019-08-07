@@ -15,6 +15,13 @@ public class KavenegarSmsModel {
     public KavenegarSmsModel() {
     }
 
+    public KavenegarSmsModel(String from, String to, String message, String messageId) {
+        this.from = from;
+        this.to = to;
+        this.message = message;
+        this.messageId = messageId;
+    }
+
     @JsonProperty("from")
     public String getFrom() {
         return from;

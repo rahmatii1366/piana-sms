@@ -3,3 +3,8 @@ content-type: application/x-www-form-urlencoded;charset=UTF-8
 
 from=0912&to=12341&message=sdjbnu&messageid=1
 ###
+POST localhost:8080/guest/sms/delivery
+content-type: application/x-www-form-urlencoded;charset=UTF-8
+
+from=0912&to=12341&message=sdjbnu&messageid=1
+###

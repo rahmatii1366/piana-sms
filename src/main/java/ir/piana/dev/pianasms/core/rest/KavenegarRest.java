@@ -29,15 +29,15 @@ public class KavenegarRest {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity delivery(
-            MultiValueMap smsModel,
-            @RequestParam Map<String,String> allRequestParams) {
+            @RequestParam("from") String from, @RequestParam("to") String to,
+            @RequestParam("message") String message, @RequestParam("messageid") String messageId) {
         logger.info("input sms");
-        smsModel.forEach((k, v) -> {
-            logger.info(k.toString().concat(" => ").concat(v.toString()));
-        });
-        logger.info(smsModel.toString());
-//        smsService.saveSmsModel(smsModel);
-        smsService.save(new InputSmsModel(smsModel));
+        logger.info(from);
+        logger.info(to);
+        logger.info(message);
+        logger.info(messageId);
+        smsService.saveSmsModel(new KavenegarSmsModel(from, to, message, messageId));
+//        smsService.save(new InputSmsModel(smsModel));
 //        smsService.save(new InputSmsModel(allRequestParams));
         return ResponseEntity.ok(200);
     }
